@@ -20,7 +20,7 @@ jobs:
       # Zip Folders
       - name: Zip Folders
         run: |
-          zip -r BesaResearch_Batches.zip . ".github/*" ".git/*"
+          zip -r BesaResearch_Batches.zip . -x ".github/*" ".git/*"
       # Upload assets with a GitHub release
       - name: Release
         uses: softprops/action-gh-release@v1
