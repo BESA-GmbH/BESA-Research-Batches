@@ -1,0 +1,13 @@
+GENBatchWindowPosition(20,20)
+; Delete tags defined before
+MAINTriggerTagDelete(Tags,2)
+GENBatchError(IgnoreNext,DisplayLog,NoMessage)
+MAINMontage(Add: EKG, Wait if invalid, GlobalMontage)
+EditDefaultEpoch(-50.000,50.000)
+Pause("Please set a cursor on one ECG peak and then select the label of the ECG channel if present.")
+MAINMarkBlock(Rawdata,-,1)
+MAINSearchAverageView(2,Selected,Default,Default,75%,none,NoBaselineCorrect,ZeroMean,WholeFile,DeletePreviousTags,100,OrginalView)
+MAINViewAverageBuffer(2)
+MAINMarkBlock(WholeSegment,-,2)
+; use only one ECG topography for EEG
+MAINDefineArtifactTopography(ECG,Enable,EEG,Grd,Mag,Append,1)
